@@ -1,0 +1,28 @@
+<div class="card mt-4" style="max-width: 28rem;margin: 0 auto;">
+<div class="card-header"><%= pic.title %></div>
+    <%= image_tag pic.image.url , class: 'card-img-top card-padding img-fluid', style: 'height: 350px;'%>
+    <% if user_signed_in? and current_user.id.eql? (pic.user_id) %>
+      <p class="center"><%= link_to "Edit", edit_pic_path(pic), class: 'btn btn-sm btn-info' %>
+      <%= link_to "Delete", pic_path(pic), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+    <div class="card-body">
+      <p class="card-text"><%= pic.description %></p>
+      <p class="card-text"><small class="text-muted"><%= time_ago_in_words(pic.created_at) %> ago</small></p>
+    </div>
+    <% if user_signed_in? %>
+      <div class="card-footer">
+        <%= link_to fa_icon("thumbs-up") , like_pic_path(pic), method: :put %>
+            <%= @pic.get_upvotes.size %>
+        <%= link_to fa_icon("thumbs-down") , unlike_pic_path(pic), method: :put, style: 'color: red' %>
+            <%= @pic.get_downvotes.size %>
+      </div>
+    <% else %>
+    <div class="card-footer">
+      <%= link_to fa_icon("thumbs-up"), new_user_session_path %>
+        <%= pic.get_upvotes.size %>
+      <%= link_to fa_icon("thumbs-down"), new_user_session_path ,style: 'color: red' %>
+        <%= pic.get_downvotes.size  %>
+    </div>
+    <% end %>
+</div>
+</div>

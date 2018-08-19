@@ -1,0 +1,9 @@
+  <div class="card text-capitalize">
+    <div class="card-header"><%= link_to pic.title, pic, style: 'color: dimgrey;text-decoration-line: none;' %></div>
+    <a href="<%= pic_path(pic) %>"><img class="card-img-top card-padding img-fluid" src="<%= pic.image %>"></a>
+    <div class="card-body">
+      <span class="badge badge-primary img-fluid">By: <%= pic.email %></span>
+      <p class="card-text"><%= truncate(pic.description, length: 30) %></p>
+      <p class="card-text"><small class="text-muted"><%= time_ago_in_words(pic.created_at) %> ago</small></p>
+    </div>
+  </div>

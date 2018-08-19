@@ -1,0 +1,8 @@
+<div class="center">
+  <h1>Edit Pic</h1>
+    <%= image_tag @pic.image.url,class: 'img-fluid', style: 'height: 350px;width: 400px;' %>
+  </div>
+    <%= render 'form' %>
+  <div class="center">
+    <%= link_to "Cancel", pic_path(@pic), class: 'ml-2 btn btn-sm btn-primary' %> 
+</div>
