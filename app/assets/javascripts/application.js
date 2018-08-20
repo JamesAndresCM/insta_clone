@@ -16,4 +16,8 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require rails.validations
+//= require rails.validations.simple_form
+//= require validations.coffee
 //= require_tree .
+
