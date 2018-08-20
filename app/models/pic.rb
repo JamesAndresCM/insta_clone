@@ -1,7 +1,8 @@
 class Pic < ApplicationRecord
   mount_uploader :image, ImageUploader
-  validates_presence_of :title
-  validates_presence_of :description
+  validates_processing_of :image
+  validates_presence_of :title, message: "Put some title please!"
+  validates_presence_of :description, message: "Put some description please!"
   belongs_to :user
   acts_as_votable
 

@@ -12,11 +12,19 @@ class PicsController < ApplicationController
   def edit; end
 
   def create
-    redirect_to pics_path,notice: "Pic created successfully" if pic.save
+    if pic.save
+      redirect_to pics_path,notice: "Pic created successfully"
+    else
+      render 'new'
+    end
   end
 
   def update
-    redirect_to pic_path(pic), notice: "Update Pic"  if pic.update(pic_params)
+    if pic.update(pic_params)
+      redirect_to pic_path(pic), notice: "Update Pic"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -37,7 +45,7 @@ class PicsController < ApplicationController
   private
 
   def pic_params
-    params.require(:pic).permit(:title,:description,:image)
+    params.require(:pic).permit(:title,:description,:image,:remove_image)
   end
 
   def set_pic
