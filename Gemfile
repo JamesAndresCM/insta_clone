@@ -19,6 +19,9 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'acts_as_votable'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+gem 'mini_magick'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
