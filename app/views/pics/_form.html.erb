@@ -1,8 +1,13 @@
 <div class="container center col-md-10">
-<%= simple_form_for pic, defaults: { input_html: { class: 'col-md-5', style: 'margin: 0 auto;' } } do |f| %>
-  <%= f.input :title,required: true, error: 'title not nil!' %>
+<%= simple_form_for pic,defaults: { input_html: { class: 'col-md-5', style: 'margin: 0 auto;' } },validate: true do |f| %>
+  <%= f.input :title,required: true %>
   <%= f.input :description,{ input_html: { rows:  5 } } %>
+  <% if f.object.image? %>
+  <%= image_tag f.object.image.thumb.url %>
+  <%= f.label :remove_image %>
+  <%= f.check_box :remove_image %>
+  <% end %>
   <%= f.input :image, {input_html: {class: 'form-control col-md-5'}} %>
-  <%= f.button :submit, {class: 'btn btn-sm btn-primary'} %>
+  <%= f.button :submit, {class: ' btn btn-sm btn-primary'} %>
 <% end %>
 </div>
